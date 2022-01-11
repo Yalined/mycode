@@ -107,23 +107,24 @@ while True:
       inventory += [move[1]]
       #display a helpful message
       print(move[1] + ' got!')
-      #delete the item from the room
-      del rooms[currentRoom]['item']
     #otherwise, if the item isn't there to get
     else:
       #tell them they can't get it
-      print('Can\'t get ' + move[1] + '!')
-      
-  ## Define how a player can win
-  if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
-    print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
-    break
+          print('Can\'t get ' + move[1] + '!')
+    
+    ## Define how a player can win
+    if currentRoom == 'Kitchen' and 'potion' in inventory and 'monster' in rooms[currentRoom]:
+          print('Oh no! A monster is in front of you wanting to eat you. You used the potion to transform it into a                  Chihuahua! You can proceed!')
+          #delete the item from the room
+          del rooms[currentRoom]['potion']
+          break      
+          
+          ## Define how a player can win
+    elif currentRoom == 'Garden' and 'key' in inventory:
+         print('You escaped the house with the ultra rare key... YOU WIN!')
+         break
 
-  #if player has potion when in room with monster, they can use potion to defeat monster.
-  if 'item' in rooms[Kitchen] and 'potion' in inventory and 'monster' in rooms[currentRoom]:
-      print('Oh no! A monster is in front of you wanting to eat you. You used the potion to transform it into a Chihuahua. You survived the monster. You can proceed.' )
-   
-   ## If a player enters a room with a monster
-   else 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-    print('A monster has got you... GAME OVER!')
-    break
+       ## If a player enters a room with a monster
+    elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+         print('A monster has got you... GAME OVER!')
+         break
