@@ -113,18 +113,15 @@ while True:
           print('Can\'t get ' + move[1] + '!')
     
     ## Define how a player can win
-    if currentRoom == 'Kitchen' and 'potion' in inventory and 'monster' in rooms[currentRoom]:
-          print('Oh no! A monster is in front of you wanting to eat you. You used the potion to transform it into a                  Chihuahua! You can proceed!')
-          #delete the item from the room
-          del rooms[currentRoom]['potion']
-          break      
+  if currentRoom == 'Kitchen' and 'potion' in inventory and 'monster' in rooms[currentRoom]['item']:
+          print('Oh no! A monster is in front of you wanting to eat you. You used the potion to transform it into a                  Chihuahua! You can proceed!')    
           
           ## Define how a player can win
-    elif currentRoom == 'Garden' and 'key' in inventory:
+  elif currentRoom == 'Garden' and 'key' in inventory:
          print('You escaped the house with the ultra rare key... YOU WIN!')
          break
 
        ## If a player enters a room with a monster
-    elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
          print('A monster has got you... GAME OVER!')
          break
